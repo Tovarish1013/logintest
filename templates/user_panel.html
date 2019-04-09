@@ -1,0 +1,35 @@
+{% block body %}
+
+{% if session['logged_in'] %}
+
+<h1>Welcome to the user panel.</h1>
+
+Hello, 
+{% if session['nickname'] %}
+{{ session['nickname'] }}
+{% else %}
+{{ session['username'] }}
+{% endif %}
+
+You're logged in already!
+
+<br>
+<br>
+<h3>Update Nickname</h3>
+
+<form action="/update" method="POST">Update me!
+<input type="text" name="nickname" placeholder="Nickname" value="">
+<input type="submit" value="Submit">
+</form>
+
+<br>
+<br>
+<a href="/logout">Logout</a>
+
+{% else %}
+
+You are not logged in!  Please <a href="/">login</a>.
+
+{% endif %}
+
+{% endblock %}
